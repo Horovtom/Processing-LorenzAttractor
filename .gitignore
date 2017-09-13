@@ -7,3 +7,5 @@ application.windows64
 application.macosx
 *.zip
 *.rar
+out
+.vscode
