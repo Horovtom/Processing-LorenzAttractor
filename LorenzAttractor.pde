@@ -4,15 +4,22 @@ import peasy.org.apache.commons.math.geometry.*;
 
 PeasyCam cam;
 
-float x = 2;
-float y = 0;
-float z = 0;
+float defaultX = 2;
+float defaultY = 0;
+float defaultZ = 0;
+float x = defaultX;
+float y = defaultY;
+float z = defaultZ;
 
-float a = 11;
-float b = 28;
+float defaultA = 11;
+float defaultB = 28;
+float defaultC = 8.0/3.0;
+
+float a = defaultA;
+float b = defaultB;
 //float b = 99.96;
 //float b = 19;
-float c = 8.0/3.0;
+float c =defaultC;
 //float c = 0.8;
 
 boolean tailPreset = true;
@@ -96,7 +103,8 @@ void showHUD() {
   text("HOME a END mění rychlost animace", 10, textBase+40);
   text("INSERT vypíná ocas", 10, textBase+60);
   text("DELETE vypíná duhové zbarvení", 10, textBase+80);
-  text("H to show/hide this help", 10, textBase + 100);
+  text("R to reset animation", 10, textBase + 100);
+  text("H to show/hide this help", 10, textBase + 120);
   cam.endHUD();
 }
 
@@ -145,7 +153,19 @@ void keyPressed() {
   } else if (keyCode == 147) { //DEL
     rainbowPreset = !rainbowPreset;
     println("rainbowPreset = " + rainbowPreset);
-  } else if (keyCode == 72) {
+  } else if (keyCode == 72) { //H
     showHUD = !showHUD;
+  } else if (keyCode == 82) { //R
+    resetToDefaults();
   }
+  
+}
+
+void resetToDefaults() {
+    x = defaultX;
+    y = defaultY;
+    z = defaultZ;
+    a = defaultA;
+    b = defaultB;
+    c = defaultC;
 }
